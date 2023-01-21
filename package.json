@@ -1,0 +1,28 @@
+{
+  "name": "mobile-bff",
+  "version": "1.0.0",
+  "description": "BFF de la app móvil de Cauri: agrega cuentas, tarjetas y pagos para una pantalla.",
+  "private": true,
+  "main": "dist/app.js",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "start": "node dist/app.js",
+    "dev": "tsx watch src/app.ts",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@cauri/commons": "github:demo-org-np-migration/cauri-commons-js#v1.2.1",
+    "express": "^4.19.2",
+    "prom-client": "^15.1.3"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.21",
+    "@types/node": "^20.14.0",
+    "tsx": "^4.19.1",
+    "typescript": "^5.6.3",
+    "vitest": "^2.1.4"
+  }
+}
