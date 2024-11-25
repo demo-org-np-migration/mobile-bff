@@ -1,0 +1,8 @@
+apiVersion: v2
+name: mobile-bff
+description: Helm chart for mobile-bff, el backend de la app móvil de Cauri.
+type: application
+version: 0.1.0
+appVersion: "1.0.0"
+maintainers:
+  - name: channels

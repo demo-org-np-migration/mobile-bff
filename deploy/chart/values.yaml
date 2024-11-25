@@ -1,0 +1,41 @@
+image:
+  repository: ghcr.io/demo-org-np-migration/mobile-bff
+  tag: "latest"
+  pullPolicy: IfNotPresent
+
+replicaCount: 1
+
+resources:
+  requests:
+    cpu: 100m
+    memory: 128Mi
+  limits:
+    cpu: 200m
+    memory: 256Mi
+
+service:
+  port: 8080
+
+# Plain env vars merged onto el container. KEYCLOAK_CLIENT_SECRET no va acá,
+# sale del Secret keycloak-client-mobile-bff (ver keycloakSecret abajo).
+env:
+  ENV: staging
+  LOG_LEVEL: info
+  KEYCLOAK_ISSUER: http://keycloak.platform.svc:8080/realms/cauri-staging
+  KEYCLOAK_CLIENT_ID: mobile-bff
+  ACCOUNTS_API_URL: http://accounts-api:8080
+  CARDS_API_URL: http://cards-api:8080
+  PAYMENTS_API_URL: http://payments-api:8080
+  NOTIFICATIONS_URL: http://notifications:8080
+
+keycloakSecret:
+  # Terraform ya crea keycloak-client-mobile-bff en cada namespace de entorno.
+  name: keycloak-client-mobile-bff
+  key: client_secret
+
+serviceMonitor:
+  enabled: true
+  interval: 30s
+
+podLabels: {}
+podAnnotations: {}

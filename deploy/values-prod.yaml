@@ -1,0 +1,26 @@
+replicaCount: 2
+
+env:
+  ENV: prod
+  LOG_LEVEL: info
+  KEYCLOAK_ISSUER: http://keycloak.platform.svc:8080/realms/cauri-prod
+  KEYCLOAK_CLIENT_ID: mobile-bff
+  ACCOUNTS_API_URL: http://accounts-api.prod.svc:8080
+  CARDS_API_URL: http://cards-api.prod.svc:8080
+  PAYMENTS_API_URL: http://payments-api.prod.svc:8080
+  NOTIFICATIONS_URL: http://notifications.prod.svc:8080
+
+keycloakSecret:
+  name: keycloak-client-mobile-bff
+  key: client_secret
+
+serviceMonitor:
+  enabled: true
+
+resources:
+  requests:
+    cpu: 100m
+    memory: 128Mi
+  limits:
+    cpu: 300m
+    memory: 256Mi

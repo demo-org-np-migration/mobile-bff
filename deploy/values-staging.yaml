@@ -1,0 +1,18 @@
+replicaCount: 1
+
+env:
+  ENV: staging
+  LOG_LEVEL: info
+  KEYCLOAK_ISSUER: http://keycloak.platform.svc:8080/realms/cauri-staging
+  KEYCLOAK_CLIENT_ID: mobile-bff
+  ACCOUNTS_API_URL: http://accounts-api.staging.svc:8080
+  CARDS_API_URL: http://cards-api.staging.svc:8080
+  PAYMENTS_API_URL: http://payments-api.staging.svc:8080
+  NOTIFICATIONS_URL: http://notifications.staging.svc:8080
+
+keycloakSecret:
+  name: keycloak-client-mobile-bff
+  key: client_secret
+
+serviceMonitor:
+  enabled: true
